@@ -1,0 +1,74 @@
+body, html {
+    height: 100%;
+}
+
+.container {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .3);
+    padding: 50px;
+}
+
+.text-wrapper {
+    text-align: center;
+}
+h2 {
+    font-size: 48px;
+}
+p {
+    font-size: 20px;
+}
+
+form {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+input{
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, .7);
+    outline: none;
+    border: none;
+}
+
+button{
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, .7);
+    outline: none;
+    border: none;
+    color: gray;
+    cursor: pointer;
+}
+
+body {
+    color: white;
+    background-color: black;
+    background-image: url("../DSC_0018.JPG");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.message {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .8);
+    padding: 50px;
+    z-index: 11;
+}
