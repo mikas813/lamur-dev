@@ -1,29 +1,29 @@
-const submitButton = document.querySelector('button');
+const emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const getNode = (selector) => document.querySelector(selector);
+const toggleCSS = ($el, prop, val) => {
+  getNode($el).style[prop] = val;
+  setTimeout(() => getNode($el).style[prop] = 'none', 2000);
+};
+
+const showModal = (text) => {
+  getNode('.message').innerText = text;
+  toggleCSS('.modal', 'display', 'block');
+};
 
 const validate = (email) => {
-  if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-      email)) {
-    showModal('Thank you!');
-    getNode('form').submit();
-    getNode('form').reset();
+  if (emailRegExp.test(email)) {
+    showModal('Thank you!', 'success');
+    setTimeout(() => getNode('form').submit(), 250);
+  } else if (email === '') {
+    showModal('Please fill in an Email!');
   } else {
     showModal('You have entered an invalid email address!');
   }
 };
 
-const showModal = (text) => {
-  getNode('.message').innerText = text;
-  getNode('.modal').style.display = 'block';
-  setTimeout(() => {
-    getNode('.modal').style.display = 'none';
-  }, 2000);
-};
-
 const submit = (e) => {
-  const inputValue = getNode('#email').value;
   e.preventDefault();
-  validate(inputValue);
+  validate(getNode('#email').value);
 };
 
-submitButton.addEventListener('click', submit);
+getNode('button').addEventListener('click', submit);
